@@ -19,5 +19,8 @@ from django.urls import path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('blog/', include('blog.urls'))
+    path('blog/', include('blog.urls')),
+
+    # Leave it at the back as it matches the homepage
+    path('', include('main.urls')),
 ]
