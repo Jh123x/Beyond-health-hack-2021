@@ -17,6 +17,10 @@
 1. Visit `http://127.0.0.1:8000/` to see the page
 
 
+# Live Page
+1. This page is deployed [here](http://13.212.236.84:8000/)
+
+
 # Tech Stack
 1. [`django`](https://www.djangoproject.com/)
 2. [`django-crispy-forms`](https://django-crispy-forms.readthedocs.io/en/latest/)
