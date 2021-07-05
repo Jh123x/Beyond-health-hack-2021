@@ -16,6 +16,7 @@ Blogs
                 <th scope="col">Title</th>
                 <th scope="col">Views</th>
                 <th scope="col">Likes</th>
+                <th scope="col">Login Required</th>
                 <th scope="col">Link</th>
             </tr>
         </thead>
@@ -26,10 +27,14 @@ Blogs
                 <td>{{ blog.title }}</td>
                 <td>{{ blog.views }}</td>
                 <td>{{ blog.likes }}</td>
+                <td>{{ blog.has_trigger_warning }}</td>
                 <td><a href="/blog/{{blog.id}}" class="btn btn-primary">Visit</a></td>
             </tr>
         {% endfor %}
         </tbody>
     {% endif %}
+</div>
+<div class="container">
+    <a href="/" class="btn btn-primary">Homepage</a>
 </div>
 {% endblock %}
