@@ -18,4 +18,5 @@
 
 
 # Tech Stack
-1. django
+1. [`django`](https://www.djangoproject.com/)
+2. [`django-crispy-forms`](https://django-crispy-forms.readthedocs.io/en/latest/)
