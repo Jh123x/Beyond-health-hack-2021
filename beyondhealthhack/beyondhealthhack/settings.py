@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'blog',
     'main',
     'crispy_forms',
+    'therapy_sessions',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
