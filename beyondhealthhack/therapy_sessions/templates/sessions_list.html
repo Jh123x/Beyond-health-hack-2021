@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block title %}
+Sessions
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    {% if not sessions %}
+        <h4>There are no sessions</h4>
+    {% else %}
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Start Time</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Therapist</th>
+                <th scope="col">Link</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for session in sessions %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ session.start_time }}</td>
+                <td>{{ session.duration }}</td>
+                <td>{{ session.in_charge }}</td>
+                <td><a href="/sessions/{{session.session_id}}" class="btn btn-primary">Visit</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    {% endif %}
+</div>
+<div class="container">
+    <a href="/" class="btn btn-primary">Back to Homepage</a>
+</div>
+{% endblock %}

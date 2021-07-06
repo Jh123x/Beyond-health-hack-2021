@@ -1,0 +1,21 @@
+{% extends "main.html" %}
+
+{% block title %}
+Session {{ session.session_id }}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Session Details</h1>
+    <ul class="list-group">
+        <li class="list-group-item">Start Time: {{ session.start_time }}</li>
+        <li class="list-group-item">Duration: {{ session.duration }}</li>
+        <li class="list-group-item">Therapist: {{ session.in_charge.full_name }}</li>
+        <li class="list-group-item">Contact No: {{ session.in_charge.contact_no }}</li>
+        <li class="list-group-item">No of participants: {{ participants }}</li>
+        <li class="list-group-item">Link: <a href="{{ session.link }}" class="btn btn-primary">here</a></li>
+    </ul>
+    <br>
+    <a href="/sessions" class="btn btn-primary">Back to sessions</a>
+</div>
+{% endblock %}

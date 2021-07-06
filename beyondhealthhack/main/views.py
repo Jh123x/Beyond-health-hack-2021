@@ -54,14 +54,14 @@ def user_login(request):
     if request.method != "POST":
         return HttpResponseNotAllowed("This method is not allowed")
 
-    login_form = AuthenticationForm(request, data=request.POST)
+    login_form = AuthenticationForm(request, request.POST)
 
     if not login_form.is_valid():
         all_errors = login_form.errors.items()
         acc = []
-        for field, errors in all_errors:
+        for _, errors in all_errors:
             for error in errors:
-                acc.append(f"{field}: {error}\n")
+                acc.append(f"{error}\n")
         messages.error(request, f"Invalid login {''.join(acc)}")
         return redirect('/login')
 
