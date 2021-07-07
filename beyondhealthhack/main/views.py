@@ -82,3 +82,8 @@ def logout_view(request):
     logout(request)
     messages.info(request, "Successfully logged out")
     return redirect('/')
+
+
+def about_us(request):
+    """About us page"""
+    return render(request, "contact_us.html")
