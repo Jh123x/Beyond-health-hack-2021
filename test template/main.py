@@ -22,6 +22,9 @@ def index():
 def test():
     return render_template('testpage.html', blog=blog)
 
+@app.route('/blog')
+def blog():
+    return render_template('blogoverview.html', blog=blog)
 
 if __name__ == "__main__":
     app.run(debug=True)
