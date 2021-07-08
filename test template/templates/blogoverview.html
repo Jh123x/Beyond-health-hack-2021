@@ -28,25 +28,31 @@
         <div>
             <ul id="itemsList">
               <li>
-                <div class="card" style="width: 400px; height:480px; background-color: #F0FFF0;">
+                <div class="card" style="width: 400px; height:520px; background-color: #F0FFF0;">
                   <img src="https://milady.cengage.com/wp-content/uploads/2018/11/music-in-the-classroom-2.jpg" class="card-img-top" alt="Listen to their Voices">
                   <div class="card-body">
                     <strong class="d-inline-block mb-2 text-primary">Author Name</strong>
+                    <i class="fa fa-heart" style="font-size:18px;color:red" id="likes"> 20</i>
+                    <i class="fa fa-eye" style="font-size:18px;" id="views"> 80</i>
                     <h4 class="card-title" style="font-family: Copperplate;">BLOG TITLE</h4>
+                    <div class="mb-1 text-muted">12 Nov 2020</div>
                     <p class="card-text">LOOK HERE!!!! Delete one of li tag and create a for loop at ul to loop through all posts and display.</p>
-                    <i class="fa fa-heart" style="font-size:40px;color:grey" id="likeIcon"></i>
+                    <i class="fa fa-heart" style="font-size:40px;color:grey"></i>
                     <a href="#" class="btn btn-outline-primary" id="blogButton">READ MORE</a>
                   </div>
                 </div>
               </li>
               <li>
-                <div class="card" style="width: 400px; height:480px; background-color: #F0FFF0;">
+                <div class="card" style="width: 400px; height:520px; background-color: #F0FFF0;">
                   <img src="https://milady.cengage.com/wp-content/uploads/2018/11/music-in-the-classroom-2.jpg" class="card-img-top" alt="Listen to their Voices">
                   <div class="card-body">
                     <strong class="d-inline-block mb-2 text-primary">Author Name</strong>
+                    <i class="fa fa-heart" style="font-size:18px;color:red" id="likes"> 20</i>
+                    <i class="fa fa-eye" style="font-size:18px;" id="views"> 80</i>
                     <h4 class="card-title" style="font-family: Copperplate;">BLOG TITLE</h4>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <i class="fa fa-heart" style="font-size:40px;color:grey" id="likeIcon"></i>
+                    <div class="mb-1 text-muted">12 Nov 2020</div>
+                    <p class="card-text">LOOK HERE!!!! Delete one of li tag and create a for loop at ul to loop through all posts and display.</p>
+                    <i class="fa fa-heart" style="font-size:40px;color:grey"></i>
                     <a href="#" class="btn btn-outline-primary" id="blogButton">READ MORE</a>
                   </div>
                 </div>
@@ -119,6 +125,16 @@ li {
   margin-right:10px;
   margin-bottom:10px;
 }
+
+#views{
+  float: right;
+  padding-right: 15px;
+}
+
+#likes{
+  float: right;
+}
+
 
 p{
   font-family: Times New Roman;
