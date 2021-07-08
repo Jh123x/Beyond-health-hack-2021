@@ -27,26 +27,31 @@ def blog(request, id: int):
         return HttpResponseNotFound("This page is not found")
 
     if not blog.is_public and not request.user.is_authenticated:
+        print("hit2")
         messages.info(request, "You need to login to view this post")
         return redirect('/blog')
 
     blike = BlogLikes.objects.filter(blog=blog)
     blog.likes = blike.count()
-    user_liked = blike.filter(user=request.user).count()
+    user_liked = -1
+    
+    if not request.user.is_authenticated:
+        return render(request, 'blog.html', {'blog': blog, 'user_liked': user_liked})
 
+    user_liked = blike.filter(user=request.user).count()
     if request.POST.get('like', False) == "like" and user_liked == 0:
         bl = BlogLikes(blog=blog, user=request.user)
         bl.save()
         return redirect(f'/blog/{id}') 
 
-    if request.POST.get('like', False) == "unlike" and user_liked == 1:
+    if request.POST.get('like', False) == "unlike" and user_liked:
         BlogLikes.objects.filter(blog=blog, user=request.user).delete()
         return redirect(f'/blog/{id}') 
 
     blog.views += 1
     blog.save()
     
-    return render(request, 'blog.html', {'blog': blog, 'user_liked': user_liked != 0})
+    return render(request, 'blog.html', {'blog': blog, 'user_liked': user_liked})
 
 
 # Posting a blog

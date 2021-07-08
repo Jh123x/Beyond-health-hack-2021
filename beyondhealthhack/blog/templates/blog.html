@@ -25,10 +25,12 @@
 
 <form class="form-control-lg" method="POST">
     {% csrf_token %}
-    {% if user_liked %}
+    {% if user_liked == 1 %}
     <button name="like" value="unlike" class="btn btn-primary">UnLike</button>
-    {% else %}
+    {% elif user_liked == 0 %}
     <button name="like" value="like" class="btn btn-primary">Like</button>
+    {% else %}
+    <a href="/login" class="btn btn-primary">Login</a> to like the post
     {% endif %}
 </form>
 
