@@ -6,33 +6,34 @@ Blogs
 
 {% block content %}
 <div class="container">
-    {% if not blogs %}
-        <h4>There are no blogs</h4>
-    {% else %}
-        <table class="table">
-            <thead>
+    <h1>List of blogs</h1>
+    <p>Click on the tags to sort by that key</p>
+    <table class="table">
+        <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Views</th>
-                <th scope="col">Likes</th>
-                <th scope="col">Login Required</th>
+                <th scope="col"><a href="/blog?sort_by=title">Title</a></th>
+                <th scope="col"><a href="/blog?sort_by=views">Views</a></th>
+                <th scope="col"><a href="/blog?sort_by=likes">Likes</a></th>
+                <th scope="col"><a href="/blog?sort_by=date">Date Posted</a></th>
+                <th scope="col">Is Public</th>
                 <th scope="col">Link</th>
             </tr>
         </thead>
         <tbody>
-        {% for blog in blogs %}
+            {% for blog in blogs %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ blog.title }}</td>
                 <td>{{ blog.views }}</td>
                 <td>{{ blog.likes }}</td>
-                <td>{{ blog.has_trigger_warning }}</td>
+                <td>{{ blog.date }}</td>
+                <td>{{ blog.is_public }}</td>
                 <td><a href="/blog/{{blog.id}}" class="btn btn-primary">Visit</a></td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
-    {% endif %}
+    </table>
 </div>
 <div class="container">
     <a href="/" class="btn btn-primary">Homepage</a>

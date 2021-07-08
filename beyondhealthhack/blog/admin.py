@@ -7,7 +7,7 @@ class BlogAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {
             'fields': ["title", "content", "author",
-              "is_published", "has_trigger_warning"]
+              "is_published", "is_public"]
         })
     ]
 

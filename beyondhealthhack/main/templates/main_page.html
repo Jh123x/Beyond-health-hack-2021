@@ -6,23 +6,32 @@ Beyond health hack
 
 {% block content %}
 <div class="container">
-    <h1>Welcome to the beyond health hack page by Team XXXX</h1>
+    <h1>Welcome {{ username }} to Re:cover</h1>
     <br>
     Feel free to visit this different pages
+    {% if not is_authenticated %}
     <br>
     <a href='/login' class="btn btn-primary">Login</a>
     <br>
     <a href='/register' class="btn btn-primary">Register</a>
+    {% else %}
     <br>
     <a href='/logout' class="btn btn-primary">Logout</a>
+    <br>
+    <a href='/edit_profile' class="btn btn-primary">Profile</a>
+    {% endif %}
     <br>
     <a href='/blog' class="btn btn-primary">Blogs</a>
     <br>
     <a href="/admin" class="btn btn-primary">Admin Page</a>
     <br>
     <a href="/about_us" class="btn btn-primary">About Us</a>
+    <br>
+    <br>
     <h2>Login Required Fields</h2>
     <br>
     <a href="/sessions" class="btn btn-primary">Therapy Sessions</a>
+    <br>
+    <a href="/blog/post_blog" class="btn btn-primary">Post a blog</a>
 </div>
 {% endblock %}
