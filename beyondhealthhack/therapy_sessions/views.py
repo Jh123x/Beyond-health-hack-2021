@@ -1,8 +1,8 @@
-import datetime
-
+from django.core.checks import messages
 from django.http.response import HttpResponseNotAllowed
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user
 
 from .models import TherapySessions, Attendance
 
@@ -11,7 +11,7 @@ from .models import TherapySessions, Attendance
 @login_required(redirect_field_name='login', login_url="/login")
 def index(request):
     """Main page for viewing sessions"""
-    if request.method != "GET":
+    if request.method not in ("GET",):
         return HttpResponseNotAllowed("Other methods not allowed")
 
     page = request.GET.get('page', 1)
@@ -22,10 +22,25 @@ def index(request):
 
 @login_required
 def session(request, path):
-    if request.method != "GET":
+    if request.method not in ("GET", "POST"):
         return HttpResponseNotAllowed("Other methods not allowed")
 
+    user = get_user(request)
     session = TherapySessions.objects.filter(session_id=path).get()
-    participants = Attendance.objects.filter(session_id=path).count()
 
-    return render(request, "session.html", {"session":session, "participants":participants})
+    if request.method == "POST":
+        if Attendance.objects.filter(user=user, session=session).exists():
+            messages.Error("You have already registered for this session")
+            return redirect(f"/sessions/{path}")
+
+        attendance = Attendance(user = user, session = session)
+        attendance.save()
+        messages.Info("Successfully registered for class")
+        return redirect(f"/sessions/{path}")
+
+    temp = Attendance.objects.filter(session_id=path)
+    participants =temp.count()
+    is_participating = temp.filter(user=user).exists()
+    
+    
+    return render(request, "session.html", {"session":session, "participants":participants, "in_session":is_participating})

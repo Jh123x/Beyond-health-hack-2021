@@ -1,8 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
-from django.conf import settings
 from django.db.models.constraints import CheckConstraint
 from django.db.models.deletion import CASCADE
-from django.contrib.auth import get_user_model
 
 
 # Create your models here.
@@ -26,5 +25,5 @@ class TherapySessions(models.Model):
 
 
 class Attendance(models.Model):
-    session_id = models.ForeignKey(TherapySessions, on_delete=CASCADE)
-    user_id = models.BigIntegerField()
+    session = models.ForeignKey(TherapySessions, on_delete=CASCADE)
+    user = models.ForeignKey(User, on_delete=CASCADE)

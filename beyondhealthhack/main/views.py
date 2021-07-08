@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseNotAllowed
 from .forms import NewUserForm
 from django.shortcuts import redirect, render
@@ -9,7 +10,10 @@ from django.contrib import messages
 # Create your views here.
 def index(request):
     """Home page for the website"""
-    return render(request, 'main_page.html')
+    return render(request, 'main_page.html', {
+        "is_authenticated": request.user.is_authenticated, 
+        "username": request.user.get_username(),
+    })
 
 
 def register(request):
@@ -82,3 +86,27 @@ def logout_view(request):
     logout(request)
     messages.info(request, "Successfully logged out")
     return redirect('/')
+
+
+def about_us(request):
+    """About us page"""
+    return render(request, "contact_us.html")
+
+
+@login_required
+def edit_profile(request):
+    """Edir profile page for the user"""
+    if request.method == "GET":
+        return render(request, 'profile.html')
+
+    user = request.user
+    email = request.POST.get('email', None)
+    if email is not None:
+        user.email = email
+    
+    user.save()
+    messages.info(request, "Successfully added information")
+    return redirect("/edit_profile")
+
+    
+

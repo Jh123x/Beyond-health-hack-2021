@@ -13,11 +13,27 @@
         Likes: {{ blog.likes }}
         <br>
         Views: {{ blog.views }}
+        <br>
+        Date Posted: {{ blog.date }}
     </p>
     <br />
     <p>
         {{ blog.content }}
     </p>
+</div>
+<div class="container">
+
+<form class="form-control-lg" method="POST">
+    {% csrf_token %}
+    {% if user_liked == 1 %}
+    <button name="like" value="unlike" class="btn btn-primary">UnLike</button>
+    {% elif user_liked == 0 %}
+    <button name="like" value="like" class="btn btn-primary">Like</button>
+    {% else %}
+    <a href="/login" class="btn btn-primary">Login</a> to like the post
+    {% endif %}
+</form>
+
 </div>
 <div class="container">
     <a href="/blog" class="btn btn-primary">Back to blogs</a>
