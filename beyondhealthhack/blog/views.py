@@ -8,24 +8,13 @@ from .models import Blog
 # Create your views here.
 def index(request):
     """The main blog page"""
-    sort_dict = {
-        'title': lambda x: x.title,
-        'likes': lambda x: x.likes,
-        'views': lambda x: x.views,
-        'date': lambda x: x.date,
-    }
-    page = request.GET.get('page', 1)
-    if page <= 0:
-        return HttpResponseNotFound("This page is not found")
-    blog_posts = Blog.objects.filter(is_published=True).all()[page-1:page+9]
 
-    sort_key = request.GET.get('sort_by', None)
-    reversed_key = request.GET.get('reversed', None)
+    blog_posts = Blog.objects.filter(is_published=True).all()
+
+    search_term = request.GET.get('search', "").lower()
+    if search_term:
+        blog_posts= tuple(filter(lambda blog: search_term in blog.title.lower() or search_term in blog.content.lower(), blog_posts))
     
-    if sort_key is not None:
-        t = sort_dict[sort_key]
-        blog_posts = sorted(blog_posts, key=t, reverse=reversed_key is None)
-
     return render(request, 'blog_list.html', {'blogs': blog_posts})
 
 
