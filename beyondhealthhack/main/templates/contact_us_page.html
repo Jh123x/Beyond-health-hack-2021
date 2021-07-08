@@ -1,0 +1,62 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Beyond health hack
+{% endblock %}
+
+{% block content %}
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <ul class="nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Awareness</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+          </ul>
+    </head>
+    <body>
+        <div class="p-3 mb-2 bg-info text-dark">
+            <div class="container" style="padding:10%;">
+                <div id="box" class="bg-white"style=" border: 2px solid; padding: 20px; box-shadow: 10px 20px;">
+                    <h2>Contact Us</h2><br/>
+                    <form style="padding: 2%;">
+                        <div class="mb-3">
+                        <label for="name" class="form-label">Name/Alias</label>
+                        <input class="form-control" id="name" aria-describedby="nameHelp" required>
+                        <div id="nameHelp" class="form-text">We'll address you by your preferred alias.</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+                            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        </div>
+                        <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" style="height:150px" required></textarea>
+                        </div>
+                        <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="agree">
+                        <label class="form-check-label" for="agree">I agree that re:Cover can contact me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" disabled="agree">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+{% endblock %}
+
+<!---
+disabled to be bind to agree
+-->
