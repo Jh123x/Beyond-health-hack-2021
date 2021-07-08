@@ -3,7 +3,7 @@ from django.http.response import HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from .models import Blog
+from .models import Blog, BlogLikes
 
 # Create your views here.
 def index(request):
@@ -30,9 +30,23 @@ def blog(request, id: int):
         messages.info(request, "You need to login to view this post")
         return redirect('/blog')
 
+    blike = BlogLikes.objects.filter(blog=blog)
+    blog.likes = blike.count()
+    user_liked = blike.filter(user=request.user).count()
+
+    if request.POST.get('like', False) == "like" and user_liked == 0:
+        bl = BlogLikes(blog=blog, user=request.user)
+        bl.save()
+        return redirect(f'/blog/{id}') 
+
+    if request.POST.get('like', False) == "unlike" and user_liked == 1:
+        BlogLikes.objects.filter(blog=blog, user=request.user).delete()
+        return redirect(f'/blog/{id}') 
+
     blog.views += 1
     blog.save()
-    return render(request, 'blog.html', {'blog': blog})
+    
+    return render(request, 'blog.html', {'blog': blog, 'user_liked': user_liked != 0})
 
 
 # Posting a blog
