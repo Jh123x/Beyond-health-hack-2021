@@ -36,7 +36,7 @@
                         <i class="fa fa-eye" style="font-size:18px;" id="views">{{ blog.views }}</i>
                         <h4 class="card-title" style="font-family: Copperplate;">{{ blog.title }}</h4>
                         <div class="mb-1 text-muted">{{ blog.date }}</div>
-                        <div class="mb-1 text-muted">{% if blog.is_public %}Login Required{% endif %}</div>
+                        <div class="mb-1 text-muted">{% if not blog.is_public %}Login Required{% endif %}</div>
                         <p class="card-text">{{ blog.content | slice:50 }}...</p>
                         <a href="/blog/{{blog.id}}" class="btn btn-outline-primary" id="blogButton">READ MORE</a>
                     </div>

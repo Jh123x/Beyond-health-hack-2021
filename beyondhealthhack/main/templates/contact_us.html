@@ -6,22 +6,32 @@ About Us
 
 
 {% block content %}
-<div class="container">
-    <h1>Project born by Re:cover</h1>
-    <hr>
-    <h2>Web Application idea</h2>
-    <p>
-        We hope that this can serve as a platform for others to take their first step towards their recovery journey.
-        By making the conversations anonymous, we aim to create an environment where others are more willing to open up
-        By making it a group session, we hope to drive the costs down
-    </p>
+<div id="intro" class="p-3 bg-image mb-2 text-dark">
+    <div class="container" style="padding:10%;">
+        <div id="box" class="bg-white"style=" border: 2px solid; padding: 20px; box-shadow: 10px 20px;">
+            <h2>Contact Us</h2><br/>
+            <form style="padding: 2%;">
+                <div class="mb-3">
+                <label for="name" class="form-label">Name/Alias</label>
+                <input class="form-control" id="name" aria-describedby="nameHelp" required>
+                <div id="nameHelp" class="form-text">We'll address you by your preferred alias.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" required>
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" style="height:150px" required></textarea>
+                </div>
+                <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="agree">
+                <label class="form-check-label" for="agree">I agree that re:Cover can contact me</label>
+                </div>
+                <button type="submit" class="btn btn-primary" disabled="agree">Submit</button>
+            </form>
+        </div>
+    </div>
 </div>
-<div class="container">
-    <p>If you have any other suggestions feel free to contact us below</p>
-    <hr>
-    <h4>Contact us:</h4>
-    <p>This section is under construction</p>
-<a href="/" class="btn btn-primary">Back to homepage</a>
-</div>
-
 {% endblock %}
