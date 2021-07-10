@@ -19,6 +19,7 @@ class TherapySessions(models.Model):
     duration = models.IntegerField()
     link = models.CharField(max_length=200)
     in_charge = models.ForeignKey(Therapist, on_delete=CASCADE)
+    max_members = models.IntegerField()
 
     def __str__(self):
         return f"{self.start_time}: {self.in_charge}"
@@ -27,3 +28,6 @@ class TherapySessions(models.Model):
 class Attendance(models.Model):
     session = models.ForeignKey(TherapySessions, on_delete=CASCADE)
     user = models.ForeignKey(User, on_delete=CASCADE)
+    
+    def __str__(self):
+        return f"{self.session}: {self.user.__str__()}"
