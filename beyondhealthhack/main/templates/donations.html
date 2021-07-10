@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Donations
+{% endblock %}
+
+{% block content %}
+<div class="containers" id="donateIconDiv">
+    <section>
+        <h1 class="color_scheme">
+            Thank you for your donations
+        </h1>
+        <p class="color_scheme">
+            Our organizations survive on donations from everyone.
+            Every cent donated is counted towards a greater cause.
+            <hr>
+            <h2 class="color_scheme">Donate a dime, save a life!</h2>
+        </p>
+    </section>
+    <div class="containers">
+        <p class="color_scheme">Please view this link on your mobile phone</p>
+        <a href="https://www.dbs.com.sg/personal/mobile/paylink/index.html?tranRef=v3gEDTtOf8"><i class="fas fa-donate fa-10x color_scheme" id="donateIcon"></i></a>
+    </div>
+</div>
+<br>
+<style scoped>
+    .color_scheme {
+        color:white
+    }
+    #donateIconDiv {
+        margin: 0 auto;
+        position: relative;
+        text-align: center;
+    }
+    #donateIcon {
+        color:yellow;
+    }
+</style>
+{% endblock %}
