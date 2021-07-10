@@ -19,6 +19,13 @@ class Blog(models.Model):
         """Representation of the blog as a string"""
         return f"{self.id}: {self.title}"
 
+
 class BlogLikes(models.Model):
     blog = models.ForeignKey(Blog, on_delete=CASCADE)
     user = models.ForeignKey(User, on_delete=CASCADE)
+
+
+class BlogComments(models.Model):
+    user = models.ForeignKey(User, on_delete=CASCADE)
+    blog = models.ForeignKey(Blog, on_delete=CASCADE)
+    content = models.CharField(max_length=1000)
