@@ -7,10 +7,10 @@ Sessions
 {% block content %}
 <div class="container">
     {% if not sessions %}
-        <h4>There are no sessions</h4>
+    <h4>There are no sessions</h4>
     {% else %}
-        <table class="table">
-            <thead>
+    <table class="table">
+        <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Start Time</th>
@@ -20,7 +20,7 @@ Sessions
             </tr>
         </thead>
         <tbody>
-        {% for session in sessions %}
+            {% for session in sessions %}
             <tr>
                 <th scope="row">{{ forloop.counter }}</th>
                 <td>{{ session.start_time }}</td>
@@ -28,8 +28,9 @@ Sessions
                 <td>{{ session.in_charge }}</td>
                 <td><a href="/sessions/{{session.session_id}}" class="btn btn-primary">Visit</a></td>
             </tr>
-        {% endfor %}
+            {% endfor %}
         </tbody>
+    </table>
     {% endif %}
 </div>
 <div class="container">

@@ -10,7 +10,7 @@ from django.contrib import messages
 # Create your views here.
 def index(request):
     """Home page for the website"""
-    return render(request, 'main_page.html', {
+    return render(request, 'home_page.html', {
         "is_authenticated": request.user.is_authenticated, 
         "username": request.user.get_username(),
     })
@@ -51,27 +51,17 @@ def user_login(request):
         messages.info(request, "You are already logged in")
         return redirect("/")
 
-    form = AuthenticationForm()
+
     if request.method == "GET":
-        return render(request, 'login.html', {'login_form': form})
+        return render(request, 'login.html')
     
     if request.method != "POST":
         return HttpResponseNotAllowed("This method is not allowed")
 
-    login_form = AuthenticationForm(request, request.POST)
-
-    if not login_form.is_valid():
-        all_errors = login_form.errors.items()
-        acc = []
-        for _, errors in all_errors:
-            for error in errors:
-                acc.append(f"{error}\n")
-        messages.error(request, f"Invalid login {''.join(acc)}")
-        return redirect('/login')
-
     username = request.POST.get("username")
     password = request.POST.get("password")
-    user = authenticate(username=username, password=password)
+    print(username,password, request.POST)
+    user = authenticate(request, username=username, password=password)
 
     if user is None:
         messages.error(request, f"Incorrect username or password")
