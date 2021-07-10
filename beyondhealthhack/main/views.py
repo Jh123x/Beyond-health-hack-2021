@@ -84,7 +84,7 @@ def about_us(request):
 
 @login_required
 def edit_profile(request):
-    """Edir profile page for the user"""
+    """Edit profile page for the user"""
     if request.method == "GET":
         return render(request, 'profile.html')
 
@@ -99,3 +99,7 @@ def edit_profile(request):
 
     
 
+
+def donations(request):
+    """Donations page"""
+    return render(request, 'donations.html')

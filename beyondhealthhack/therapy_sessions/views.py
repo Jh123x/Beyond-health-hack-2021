@@ -1,4 +1,4 @@
-from django.core.checks import messages
+from django.contrib import messages
 from django.http.response import HttpResponseNotAllowed
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
@@ -15,9 +15,7 @@ def index(request):
         return HttpResponseNotAllowed("Other methods not allowed")
 
     page = request.GET.get('page', 1)
-
     all_sessions = TherapySessions.objects.all()[page-1:page + 9]
-
     return render(request, "sessions_list.html", {'sessions': all_sessions})
 
 @login_required
@@ -27,20 +25,22 @@ def session(request, path):
 
     user = get_user(request)
     session = TherapySessions.objects.filter(session_id=path).get()
-
+    temp = Attendance.objects.filter(session_id=path)
+    participants =temp.count()
+    
     if request.method == "POST":
+        if participants >= session.max_members:
+            messages.error(request, "The max number of participants is reached")
+            return redirect(f"/sessions/{path}")
+
         if Attendance.objects.filter(user=user, session=session).exists():
-            messages.Error("You have already registered for this session")
+            messages.Error(request, "You have already registered for this session")
             return redirect(f"/sessions/{path}")
 
         attendance = Attendance(user = user, session = session)
         attendance.save()
-        messages.Info("Successfully registered for class")
+        messages.Info(request, "Successfully registered for class")
         return redirect(f"/sessions/{path}")
 
-    temp = Attendance.objects.filter(session_id=path)
-    participants =temp.count()
-    is_participating = temp.filter(user=user).exists()
-    
-    
+    is_participating = temp.filter(user=user).exists()    
     return render(request, "session.html", {"session":session, "participants":participants, "in_session":is_participating})

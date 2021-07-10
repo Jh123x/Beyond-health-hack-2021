@@ -12,12 +12,11 @@ Session {{ session.session_id }}
         <li class="list-group-item">Duration: {{ session.duration }} Hours</li>
         <li class="list-group-item">Therapist: {{ session.in_charge.full_name }}</li>
         <li class="list-group-item">Contact No: {{ session.in_charge.contact_no }}</li>
-        <li class="list-group-item">No of participants: {{ participants }}</li>
+        <li class="list-group-item">No of participants: {{ participants }}/{{session.max_members}}</li>
         {% if in_session %}
         <li class="list-group-item">Link: <a href="{{ session.link }}" class="btn btn-primary">here</a></li>
         {% endif %}
     </ul>
-
     {% if in_session %}
         <h2>You are currently in this session</h2>
     {% else %}
@@ -27,7 +26,6 @@ Session {{ session.session_id }}
         </form>
         
     {% endif %}
-
     <br>
     <a href="/sessions" class="btn btn-primary">Back to sessions</a>
 </div>

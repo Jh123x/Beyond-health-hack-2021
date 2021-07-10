@@ -58,6 +58,9 @@
                         <a class="nav-link" href="/sessions">Therapy Sessions</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/donate">Donate</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/about_us">About us</a>
                     </li>
                 </ul>
@@ -93,11 +96,11 @@
     {% if messages %}
     <div class="messages">
         {% for message in messages %}
-        {% if message.tags == 'error' %}
-        <div class="alert alert-danger">{{ message }}</div>
-        {% else %}
-        <div class="alert alert-info">{{ message }}</div>
-        {% endif %}
+            {% if message.tags == 'error' %}
+            <div class="alert alert-danger">{{ message }}</div>
+            {% else %}
+            <div class="alert alert-info">{{ message }}</div>
+            {% endif %}
         {% endfor %}
     </div>
     {% endif %}
