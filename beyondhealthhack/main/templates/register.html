@@ -13,8 +13,8 @@ Register
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-5 col-md-8">
-                    <form class="bg-white rounded shadow-5-strong p-5">
-
+                    <form class="bg-white rounded shadow-5-strong p-5" method="POST">
+                        {% csrf_token %}
                         <h2>Register</h2>
                         <h9>Join the Re:Cover Family as a volunteer!</h9>
 
@@ -24,7 +24,7 @@ Register
                         <!-- Username input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="username">Username</label>
-                            <input id="username" class="form-control" />
+                            <input id="username" class="form-control" name="username"/>
                         </div>
 
                         <!-- Email input -->
@@ -36,13 +36,13 @@ Register
                         <!-- Password input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" class="form-control" />
+                            <input type="password" id="password" class="form-control" name="password1"/>
                         </div>
 
                         <!-- Password Confirmation input -->
                         <div class="form-outline mb-4">
                             <label class="form-label" for="passwordcfm">Password Confirmation</label>
-                            <input type="password" id="passwordcfm" class="form-control" />
+                            <input type="password" id="passwordcfm" class="form-control" name="password2"/>
                         </div>
 
                         <!-- 2 column grid layout for inline styling -->
@@ -50,9 +50,9 @@ Register
                             <div class="col d-flex justify-content-center">
                                 <!-- Checkbox -->
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="form1Example3"
+                                    <input class="form-check-input" type="checkbox" value="" id="T&C"
                                         checked />
-                                    <label class="form-check-label" for="form1Example3">
+                                    <label class="form-check-label" for="T&C">
                                         I accept the <a href="">Terms & Conditions</a> of Re:Cover
                                     </label>
                                 </div>
@@ -65,11 +65,8 @@ Register
                             class="btn btn-primary btn-block">Register</button>
                         <p>If you already have an account, <a href="/login" class="btn btn-primary">Login</a> instead.
                         </p>
-
                     </form>
-
                 </div>
-
             </div>
         </div>
     </div>

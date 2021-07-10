@@ -33,9 +33,9 @@ def register(request):
     if not submitted_form.is_valid():
         all_errors = submitted_form.errors.items()
         acc = []
-        for field, errors in all_errors:
+        for _, errors in all_errors:
             for error in errors:
-                acc.append(f"{field}: {error}\n")
+                acc.append(f"{error}\n")
         messages.error(request, f"Invalid registration:\n{''.join(acc)}")
         return redirect('/register')
 
@@ -60,7 +60,6 @@ def user_login(request):
 
     username = request.POST.get("username")
     password = request.POST.get("password")
-    print(username,password, request.POST)
     user = authenticate(request, username=username, password=password)
 
     if user is None:
