@@ -1,0 +1,161 @@
+{% extends 'main.html' %}
+
+{% block title %}
+{{ blog.title }}
+{% endblock %}
+
+{% block content %}
+<div id="topPage">
+    <img id="background" src="https://www.theinformationlab.co.uk/wp-content/uploads/2016/06/beach-background-9.jpg"
+        class="card-img" alt="Welcome to our Blog">
+    <div class="card-img-overlay" id="topPageDetail">
+        <h1 id="blogTitle">LISTEN TO VOICES</h1>
+        <p id="blogtext">We deserve to be happy. Share your moments with us.</p>
+        <div class="card-body p-2" id="searchBar">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control form-control-lg" placeholder="Search Blog"
+                    aria-label="Search Blog" aria-describedby="basic-addon2" />
+                <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="postArea">
+    <ul id="itemsList">
+        {% for blog in blogs %}
+        <li class="commentLi">
+            <div class="card" style="width: 400px; height:520px; background-color: #F0FFF0;">
+                <img src="https://milady.cengage.com/wp-content/uploads/2018/11/music-in-the-classroom-2.jpg"
+                    class="card-img-top" alt="Listen to their Voices">
+                <div class="card-body">
+                    <strong class="d-inline-block mb-2 text-primary">{{ blog.author }}</strong>
+                    <i class="fa fa-eye" style="font-size:18px;" id="views">{{ blog.views }}</i>
+                    <h4 class="card-title" style="font-family: Lucida Console, Times New Roman;">{{ blog.title }}</h4>
+                    <div class="mb-1 text-muted">{{ blog.date }}</div>
+                    <div class="mb-1 text-muted">{% if not blog.is_public %}Login Required{% endif %}</div>
+                    <p class="card-text">{{ blog.content | slice:50 }}...</p>
+                    <a href="/blog/{{blog.id}}" class="btn btn-outline-primary" id="blogButton">READ MORE</a>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<style scoped>
+    body {
+        background: url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        height: 100%;
+        background-size: cover;
+    }
+
+    #topPage {
+        text-align: center;
+        width: 90%;
+        margin: auto;
+
+    }
+
+    #topPageDetail {
+        margin-top: 50px;
+    }
+
+    #searchBar {
+        width: 70%;
+        margin: auto;
+    }
+
+    #blogTitle {
+        padding-top: 110px;
+        font-family: Courier New, monospace, sans-serif;
+        font-weight: bold;
+        font-size: 65px;
+        color: antiquewhite;
+    }
+
+    #blogText {
+        padding-top: 10px;
+        font-family: monospace, sans-serif;
+        font-size: 25px;
+        color: #191970;
+    }
+
+    #background {
+        width: 100%;
+        height: 550px;
+        padding-top: 100px;
+        margin-left: 30px;
+        margin-right: 30px;
+        margin: auto;
+
+    }
+
+    #postArea {
+        width: 90%;
+        background-color: cornsilk;
+        padding-bottom: 200px;
+        margin-left: 30px;
+        margin-right: 30px;
+        margin: auto;
+
+    }
+
+    #itemsList {
+        width: 90%;
+        max-width: 100%;
+        padding: 0 5px;
+        margin: auto;
+    }
+
+    #itemsList {
+        display: flex;
+        flex-wrap: wrap;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .commentLi {
+        flex-grow: 1;
+        flex-basis: 300px;
+        text-align: start;
+        padding: 10px;
+        margin: 10px;
+    }
+
+
+    #blogButton {
+        width: 40%;
+        float: right;
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+
+    #views {
+        float: right;
+        padding-right: 15px;
+    }
+
+    #likes {
+        float: right;
+    }
+
+
+    p {
+        font-family: Times New Roman;
+        font-size: 16px;
+    }
+
+    .form-control {
+        border-color: transparent;
+        font-family: monospace, sans-serif;
+    }
+
+    .input-group>.form-control:focus {
+        border-color: transparent;
+        box-shadow: inset 0 0 0 1px transparent;
+    }
+
+    .fa-heart:hover {
+        color: red !important;
+    }
+</style>
+{% endblock %}

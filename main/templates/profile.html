@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Profile
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+    <h1>Your Profile</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="input-group">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
+            <input type="email" class="form-control" name="email" aria-describedby="inputGroup-sizing-sm">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+    <a href="/" class="btn btn-primary">Back to homepage</a>
+</div>
+{% endblock %}
