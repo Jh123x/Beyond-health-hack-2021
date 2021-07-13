@@ -79,6 +79,10 @@ def logout_view(request):
 
 def about_us(request):
     """About us page"""
+    return render(request, "about_us.html")
+
+def contact_us(request):
+    """Contact us page"""
     return render(request, "contact_us.html")
 
 
