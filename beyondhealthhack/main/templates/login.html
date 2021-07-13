@@ -5,34 +5,32 @@ Login
 {% endblock %}
 
 {% block content %}
-<!-- Background image -->
 <div id="intro" class="bg-image shadow-2-strong">
-    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-5 col-md-8">
-                    <form class="bg-white rounded shadow-5-strong p-5" method="POST">
-                        <h2>Login</h2>
-                        {% csrf_token %}
-                        <!-- Username input -->
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="username">Username</label>
-                            <input id="username" class="form-control" name="username" />
-                        </div>
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div class="container d-flex align-items-center justify-content-center text-center h-100">
+            <div id="box" class="bg-white" style=" text-align: left; width: 50%; height: 40%;  padding: 20px; box-shadow: 10px 10px #99DEDF;">
+                <form class="shadow-5-strong p-5" method="POST">
+                    <h2>Login</h2>
+                    {% csrf_token %}
+                    <!-- Username input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="username">Username</label>
+                        <input id="username" class="form-control" name="username" />
+                    </div>
 
-                        <!-- Password input -->
-                        <div class="form-outline mb-4">
-                            <label class="form-label" for="password">Password</label>
-                            <input type="password" id="password" name="password" class="form-control"/>
-                        </div>
+                    <!-- Password input -->
+                    <div class="form-outline mb-4">
+                        <label class="form-label" for="password">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"/>
+                    </div>
 
-                        <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                    </form>
-                </div>
+                    <!-- Submit button -->
+                    <div class="row mb-4">
+                        <button type="submit" style="background-color: #99DEDF;" class="btn btn-block">Sign in</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<!-- Background image -->
 {% endblock %}
