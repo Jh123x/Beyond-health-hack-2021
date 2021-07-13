@@ -105,7 +105,11 @@ def edit_profile(request):
     messages.info(request, "Successfully added information")
     return redirect("/edit_profile")
 
-    
+
+@login_required
+def payments(request):
+    """Payment for the lessons"""
+    return render(request, 'payment.html')
 
 
 def donations(request):
