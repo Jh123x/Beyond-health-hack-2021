@@ -6,27 +6,35 @@ Post Blog
 
 
 {% block content %}
-<div class="container">
-    <h1>Post a blog</h1>
-    <h4>Note, your username will appear on the blog author</h4>
-    <form method="POST">
-        {% csrf_token %}
-        <div class="input-group">
-            <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
-            <input type="text" class="form-control" name="title" aria-describedby="inputGroup-sizing-sm">
+<div id="intro" class="bg-image shadow-2-strong">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div class="container d-flex align-items-center justify-content-center text-center h-100" style="flex-direction: column;">
+            <div id="box" class="bg-white" style=" text-align: left; width: 80%; height: 60%;  padding: 20px; box-shadow: 10px 10px #99DEDF;">
+                <form class="shadow-5-strong p-4" method="POST">
+                    <h2>Post a blog</h2><br/>
+                    <span style="color: #808080 ">Note: your username will appear on the blog author</span>
+                    <hr class="solid">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Blog Content</label>
+                        <textarea class="form-control" id="content" style="height:150px" required></textarea>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheck" name="is_public">
+                        <label class="form-check-label" for="flexCheck">
+                            Make post visible to public
+                        </label>
+                      </div>
+                      <br/>
+                      <button type="submit" class="btn" style="background-color: #99DEDF;">Post</button>
+                </form>
+            </div>
+            <a href="/" class="btn btn-outline-light btn-lg m-5 justify-content-center">Back to homepage</a>
         </div>
-        <div class="input-group">
-            <span class="input-group-text">Blog Content</span>
-            <textarea class="form-control" aria-label="With textarea" name="body"></textarea>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="1" id="flexCheck" name="is_public">
-            <label class="form-check-label" for="flexCheck">
-                Make post visible to public
-            </label>
-          </div>
-        <button type="submit" class="btn btn-primary">Post</button>
-    </form>
-    <a href="/" class="btn btn-primary">Back to homepage</a>
+    </div>
 </div>
 {% endblock %}

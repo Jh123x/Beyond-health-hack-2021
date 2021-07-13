@@ -1,0 +1,20 @@
+{% extends "main.html" %}
+{% block title %}
+Payments
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Payments page</h1>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -79,7 +79,15 @@ def logout_view(request):
 
 def about_us(request):
     """About us page"""
+    return render(request, "about_us.html")
+
+def contact_us(request):
+    """Contact us page"""
     return render(request, "contact_us.html")
+
+def awareness(request):
+    """Awareness page"""
+    return render(request, 'awareness_page.html')
 
 
 @login_required
@@ -97,7 +105,11 @@ def edit_profile(request):
     messages.info(request, "Successfully added information")
     return redirect("/edit_profile")
 
-    
+
+@login_required
+def payments(request):
+    """Payment for the lessons"""
+    return render(request, 'payment.html')
 
 
 def donations(request):
