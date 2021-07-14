@@ -1,147 +1,151 @@
 <html>
-    <header>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    </header>
+<header>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</header>
 
-    <body>
-            <article style="background-color:#F7F6EE;">
-                <div id="articleContent">
-                <h1 class="fw-bolder mb-1">Here is individual blog post title</h1>
-                <p class="text-muted fst-italic mb-2" id="publishDetail">Posted on January 1, 2021 by author name</p>
-                <i class="fa fa-heart" style="font-size:20px;color:red" id="likes"> 20</i>
-                <i class="fa fa-eye" style="font-size:20px;" id="views"> 80</i>
-                <br><br>
-                <i class="fa fa-heart"  id="likeBlog">    Like the Post</i>
-                
-                <br><br>
+<body>
+    <article style="background-color:#F7F6EE;">
+        <div id="articleContent">
+            <h1 class="fw-bolder mb-1">Here is individual blog post title</h1>
+            <p class="text-muted fst-italic mb-2" id="publishDetail">Posted on January 1, 2021 by author name</p>
+            <i class="fa fa-heart" style="font-size:20px;color:red" id="likes"> 20</i>
+            <i class="fa fa-eye" style="font-size:20px;" id="views"> 80</i>
+            <br><br>
+            <i class="fa fa-heart" id="likeBlog"> Like the Post</i>
+            <br><br>
+            <figure class="mb-4">
+                <img id="blogImage"
+                    src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-happy-quotes-1574799429.jpg"
+                    alt="Re:cover">
+            </figure>
 
+            <pre>
+                The content of the blog. 
+                The content will be displayed in multiple paragraphs, instead of whole chunk in one paragraph.
+            </pre>
+        </div>
+        <section>
+            <div class="card">
+                <div class="card-body">
+                    <form class="mb-4">
+                        <textarea class="form-control" rows="3" placeholder="Let's Join the Discussion!"></textarea>
+                        <span class="input-group-addon btn btn-primary" id="commentButton">COMMENT</span>
 
-                <figure class="mb-4">
-                    <img id = "blogImage" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-happy-quotes-1574799429.jpg" alt="Re:cover">
-                </figure>
-                
-                    <pre> 
-The content of the blog. 
-The content will be displayed in multiple paragraphs, instead of whole chunk in one paragraph.
-                    </pre>
-                </div>
-                <section>
-                    <div class="card">
-                        <div class="card-body">
-                            <form class="mb-4">
-                                <textarea class="form-control" rows="3" placeholder="Let's Join the Discussion!"></textarea>
-                                <span class="input-group-addon btn btn-primary" id="commentButton">COMMENT</span>
-                                       
-                            </form><br><br>
-                            <!-- Single comment-->
-                            <div class="d-flex">
-                                <div class="flex-shrink-0"><img class="rounded-circle" src="https://www.pinclipart.com/picdir/middle/531-5315374_happy-transparent-background-smiley-face-clipart.png" alt="..." id="commentFace"></div>
-                                <div class="ms-3">
-                                    <div class="fw-bold">Commenter Name</div>
-                                    Love the sharings, really fruitful and jiayous to all others who have similar experiences.
-                                </div>
-                            </div>
+                    </form><br><br>
+                    <!-- Single comment-->
+                    <div class="d-flex">
+                        <div class="flex-shrink-0"><img class="rounded-circle"
+                                src="https://www.pinclipart.com/picdir/middle/531-5315374_happy-transparent-background-smiley-face-clipart.png"
+                                alt="..." id="commentFace"></div>
+                        <div class="ms-3">
+                            <div class="fw-bold">Commenter Name</div>
+                            Love the sharings, really fruitful and jiayous to all others who have similar experiences.
                         </div>
                     </div>
-                </section>
-            </article>
+                </div>
+            </div>
+        </section>
+    </article>
 
 
 
-    </body>
+</body>
 
 
 </html>
 
 <style scoped>
-body {
-    background: url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
-    height: 100%;
-    background-size: cover;
-}
+    body {
+        background: url("https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
+        height: 100%;
+        background-size: cover;
+    }
 
-article{
-    text-align:start;
-    margin-top:100px;
-    margin-left: 30px;
-    margin-right: 30px;
+    article {
+        text-align: start;
+        margin-top: 100px;
+        margin-left: 30px;
+        margin-right: 30px;
 
-}
+    }
 
 
 
-section{
-    width:90%;
-    margin:auto;
-    padding-bottom: 100px;
-    margin-left: 50px;
-    margin-right: 30px;
-}
+    section {
+        width: 90%;
+        margin: auto;
+        padding-bottom: 100px;
+        margin-left: 50px;
+        margin-right: 30px;
+    }
 
-pre {
-  display: block;
-  font-family: monospace;
-  white-space: pre;
-  margin: 1em 0;
-} 
-    
-h1{
-    font-family: Lucida Console, Times New Roman;
+    pre {
+        display: block;
+        font-family: monospace;
+        white-space: pre;
+        margin: 1em 0;
+    }
 
-}
+    h1 {
+        font-family: Lucida Console, Times New Roman;
 
-p{
-    color:white;
-}
+    }
 
-#articlecontent{
-    margin: 50px;
-    padding-top: 50px;
-}
+    p {
+        color: white;
+    }
 
-.card{
-    background-color:#FFFACD;
-}
+    #articlecontent {
+        margin: 50px;
+        padding-top: 50px;
+    }
 
-#commentButton{
-    margin-top: 10px;
-    float: right;
-    background-color: #e7fbfc;
-    color: black;
+    .card {
+        background-color: #FFFACD;
+    }
 
-}
+    #commentButton {
+        margin-top: 10px;
+        float: right;
+        background-color: #e7fbfc;
+        color: black;
 
-#publishDetail{
-    float: left;
-    padding-right:50px;
-    padding-top: 5px;
-}
+    }
 
-#likes{
-    padding-right: 10px;
-    padding-top: 7px;
-    
-}
+    #publishDetail {
+        float: left;
+        padding-right: 50px;
+        padding-top: 5px;
+    }
 
-#likeBlog{
-    font-size:20px;
-    color:#E45865;  
-}
+    #likes {
+        padding-right: 10px;
+        padding-top: 7px;
 
-#commentFace {
-    height: 60px;
-    width: 60px;
-}
+    }
 
-.fa-heart:hover{
-   color:red !important;
-}
+    #likeBlog {
+        font-size: 20px;
+        color: #E45865;
+    }
 
-#blogImage {
-    width:700px;
-    height:400px;
-}
+    #commentFace {
+        height: 60px;
+        width: 60px;
+    }
 
+    .fa-heart:hover {
+        color: red !important;
+    }
+
+    #blogImage {
+        width: 700px;
+        height: 400px;
+    }
 </style>
