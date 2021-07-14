@@ -12,7 +12,7 @@ class Therapist(models.Model):
         return f"{self.full_name}"
 
 
-class TherapySessions(models.Model):
+class TherapySession(models.Model):
     session_id = models.BigAutoField(primary_key=True)
     session_title = models.CharField(max_length=200)
     start_time = models.DateTimeField()
@@ -26,7 +26,7 @@ class TherapySessions(models.Model):
 
 
 class Attendance(models.Model):
-    session = models.ForeignKey(TherapySessions, on_delete=CASCADE)
+    session = models.ForeignKey(TherapySession, on_delete=CASCADE)
     user = models.ForeignKey(User, on_delete=CASCADE)
     
     def __str__(self):

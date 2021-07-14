@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user
 
-from .models import TherapySessions, Attendance
+from .models import TherapySession, Attendance
 
 
 # Create your views here.
@@ -15,7 +15,7 @@ def index(request):
         return HttpResponseNotAllowed("Other methods not allowed")
 
     page = request.GET.get('page', 1)
-    all_sessions = TherapySessions.objects.all()[page-1:page + 9]
+    all_sessions = TherapySession.objects.all()[page-1:page + 9]
     return render(request, "sessions_list.html", {'sessions': all_sessions})
 
 @login_required
@@ -24,7 +24,7 @@ def session(request, path):
         return HttpResponseNotAllowed("Other methods not allowed")
 
     user = get_user(request)
-    session = TherapySessions.objects.filter(session_id=path).get()
+    session = TherapySession.objects.filter(session_id=path).get()
     temp = Attendance.objects.filter(session_id=path)
     participants =temp.count()
     

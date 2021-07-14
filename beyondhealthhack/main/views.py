@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseNotAllowed
 from .forms import NewUserForm
+from .models import ContactUsForm
 from django.shortcuts import redirect, render
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
@@ -14,35 +15,6 @@ def index(request):
         "is_authenticated": request.user.is_authenticated, 
         "username": request.user.get_username(),
     })
-
-
-def register(request):
-    """Register to be a user"""
-    if request.user.is_authenticated:
-        messages.info(request, "You are already logged in")
-        return redirect("/")
-    
-    form = NewUserForm()
-    if request.method == "GET":
-        return render(request, 'register.html', {"register_form": form})
-
-    if request.method != "POST":
-        return HttpResponseNotAllowed("Only GET and POST methods are allowed")
-
-    submitted_form = NewUserForm(request.POST)
-    if not submitted_form.is_valid():
-        all_errors = submitted_form.errors.items()
-        acc = []
-        for _, errors in all_errors:
-            for error in errors:
-                acc.append(f"{error}\n")
-        messages.error(request, f"Invalid registration:\n{''.join(acc)}")
-        return redirect('/register')
-
-    user = submitted_form.save()
-    login(request, user)
-    messages.success(request, "Successful registration")
-    return redirect("/")
 
 
 def user_login(request):
@@ -83,7 +55,33 @@ def about_us(request):
 
 def contact_us(request):
     """Contact us page"""
-    return render(request, "contact_us.html")
+    if request.method == "GET":
+        return render(request, "contact_us.html")
+
+    if request.method != "POST":
+        return HttpResponseNotAllowed("Method is not allowed")
+
+    agree = request.POST.get("agree")
+    if agree != "on":
+        messages.ERROR("You have to agree to let RE:Cover to contact you")
+        return redirect("/contact_us")
+
+    name = request.POST.get("name")
+    email = request.POST.get("email")
+    phone_number = request.POST.get("phone_number")
+    category = request.POST.get("category")
+    message = request.POST.get("message")
+
+    try:
+        form_res = ContactUsForm(name=name, email=email, phone_no=phone_number, category=category, message=message)
+        form_res.save()
+    except Exception:
+        messages.error(request, "Invalid fields in form")
+        return redirect("/contact_us")
+
+    messages.info(request, "Form Successfully sent, we will contact you shortly")
+    return redirect("/contact_us")
+    
 
 def awareness(request):
     """Awareness page"""

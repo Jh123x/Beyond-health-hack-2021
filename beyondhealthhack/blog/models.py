@@ -20,12 +20,12 @@ class Blog(models.Model):
         return f"{self.id}: {self.title}"
 
 
-class BlogLikes(models.Model):
+class BlogLike(models.Model):
     blog = models.ForeignKey(Blog, on_delete=CASCADE)
     user = models.ForeignKey(User, on_delete=CASCADE)
 
 
-class BlogComments(models.Model):
+class BlogComment(models.Model):
     user = models.ForeignKey(User, on_delete=CASCADE)
     blog = models.ForeignKey(Blog, on_delete=CASCADE)
     content = models.CharField(max_length=1000)
