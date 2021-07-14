@@ -24,15 +24,19 @@ def test():
 
 @app.route('/blog')
 def blog():
-    return render_template('blogoverview.html', blog=blog)
+    return render_template('blogOverview.html', blog=blog)
 
 @app.route('/blogdetail')
 def blogDetail():
-    return render_template('blogdetail.html', blog=blog)
+    return render_template('blogDetail.html', blog=blog)
 
 @app.route('/session')
 def session():
     return render_template('sessionOverview.html', blog=blog)
+
+@app.route('/sessiondetail')
+def sessionDetail():
+    return render_template('sessionDetail.html', blog=blog)
 
 if __name__ == "__main__":
     app.run(debug=True)
