@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TherapySessions, Therapist, Attendance
+from .models import TherapySession, Therapist, Attendance
 
 # Register your models here.
 class SessionAdmin(admin.ModelAdmin):
@@ -12,6 +12,6 @@ class SessionAdmin(admin.ModelAdmin):
         })
     ]
 
-admin.site.register(TherapySessions, SessionAdmin)
+admin.site.register(TherapySession, SessionAdmin)
 admin.site.register(Therapist)
 admin.site.register(Attendance)
