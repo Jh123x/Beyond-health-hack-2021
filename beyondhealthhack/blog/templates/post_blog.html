@@ -17,11 +17,11 @@ Post Blog
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" required>
+                        <input type="text" class="form-control" id="title" required name="title">
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Blog Content</label>
-                        <textarea class="form-control" id="content" style="height:150px" required></textarea>
+                        <textarea class="form-control" id="content" style="height:150px" required name="body"></textarea>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="1" id="flexCheck" name="is_public">
