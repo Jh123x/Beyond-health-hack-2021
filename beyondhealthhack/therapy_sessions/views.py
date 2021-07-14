@@ -39,7 +39,7 @@ def session(request, path):
 
         attendance = Attendance(user = user, session = session)
         attendance.save()
-        messages.Info(request, "Successfully registered for class")
+        messages.info(request, "Successfully registered for class")
         return redirect(f"/sessions/{path}")
 
     is_participating = temp.filter(user=user).exists()    

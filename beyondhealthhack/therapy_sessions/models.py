@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.db.models.constraints import CheckConstraint
 from django.db.models.deletion import CASCADE
 
 
@@ -15,6 +14,7 @@ class Therapist(models.Model):
 
 class TherapySession(models.Model):
     session_id = models.BigAutoField(primary_key=True)
+    session_title = models.CharField(max_length=200)
     start_time = models.DateTimeField()
     duration = models.IntegerField()
     link = models.CharField(max_length=200)
