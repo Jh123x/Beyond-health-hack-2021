@@ -3,7 +3,7 @@ from django.http.response import HttpResponseNotFound
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib import messages
-from .models import Blog, BlogComments, BlogLikes
+from .models import Blog, BlogComment, BlogLike
 
 # Create your views here.
 
@@ -25,7 +25,7 @@ def index(request):
 def blog(request, id: int):
     """Renders the specific blog"""
     blog = get_object_or_404(Blog, pk=id)
-    blog_comments = BlogComments.objects.filter(blog=blog).all()
+    blog_comments = BlogComment.objects.filter(blog=blog).all()
 
     if not blog.is_published:
         return HttpResponseNotFound("This page is not found")
@@ -34,7 +34,7 @@ def blog(request, id: int):
         messages.info(request, "You need to login to view this post")
         return redirect('/blog')
 
-    blike = BlogLikes.objects.filter(blog=blog)
+    blike = BlogLike.objects.filter(blog=blog)
     blog.likes = blike.count()
     user_liked = -1
 
@@ -43,17 +43,17 @@ def blog(request, id: int):
 
     user_liked = blike.filter(user=request.user).count()
     if request.POST.get('like', False) == "like" and user_liked == 0:
-        bl = BlogLikes(blog=blog, user=request.user)
+        bl = BlogLike(blog=blog, user=request.user)
         bl.save()
         return redirect(f'/blog/{id}')
 
     if request.POST.get('like', False) == "unlike" and user_liked:
-        BlogLikes.objects.filter(blog=blog, user=request.user).delete()
+        BlogLike.objects.filter(blog=blog, user=request.user).delete()
         return redirect(f'/blog/{id}')
 
     content = request.POST.get('comment', False)
     if content:
-        comment = BlogComments(blog=blog, user=request.user, content=content)
+        comment = BlogComment(blog=blog, user=request.user, content=content)
         comment.save()
         return redirect(f'/blog/{id}')
 
