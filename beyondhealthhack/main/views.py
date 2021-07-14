@@ -83,8 +83,6 @@ def contact_us(request):
     return redirect("/contact_us")
     
 
-    
-
 def awareness(request):
     """Awareness page"""
     return render(request, 'awareness_page.html')
