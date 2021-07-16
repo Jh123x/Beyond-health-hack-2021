@@ -4,17 +4,24 @@ Payments
 {% endblock %}
 
 {% block content %}
-<div class="container">
-    <h1>Payments page</h1>
-    <form method="POST">
-        <div class="mb-3">
-            <label for="emailInput" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+<div id="intro" class="bg-image shadow-2-strong">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div class="container d-flex align-items-center justify-content-center text-center h-100" style="flex-direction: column;">
+            <div id="box" class="bg-white" style=" text-align: left; width: 80%; height: 40%;  padding: 20px; box-shadow: 10px 10px #99DEDF;">
+                <h2 style="text-align: center; text-transform: uppercase;">Payment</h2>
+                <form class="shadow-5-strong p-4" method="POST">
+                    <div class="mb-3">
+                        <label for="emailInput" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <a href="/" class="btn btn-outline-light btn-lg m-5 justify-content-center">Back to homepage</a>
         </div>
-        <div class="mb-3">
-            <label for="message" class="form-label">Message</label>
-            <textarea class="form-control" id="message" rows="3"></textarea>
-        </div>
-    </form>
+    </div>
 </div>
 {% endblock %}
